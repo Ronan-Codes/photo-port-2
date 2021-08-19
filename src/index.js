@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// React will inject whole app into whichever element has the id = root, in index.html
 ReactDOM.render(
   <React.StrictMode>
     <App />
