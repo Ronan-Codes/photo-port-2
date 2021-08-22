@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { capitalizeFirstLetter } from "../../utils/helpers";
 
 // replaced by [categories]
@@ -21,30 +21,45 @@ import { capitalizeFirstLetter } from "../../utils/helpers";
 //     },
 // ]
 
-function categorySelected(name) {
-    console.log(`${name} clicked`)
-}
+// function categorySelected(name) {
+//     console.log(`${name} clicked`)
+// }
 
-function Nav() {
-const [currentCategory, setCurrentCategory] = useState(categories[0]);
-const [categories] = useState([
-    {
-        name: "commercial",
-        description: "Photos of grocery stores, food trucks, and other commercial projects",
-    },
-    {
-        name: "portraits",
-        description: "Portraits of people in my life"
-    },
-    {
-        name: "food",
-        description: "Delicious delicacies"
-    },
-    {
-        name: "landscape",
-        description: "Fields, farmhouses, waterfalls, and the beauty of nature"
-    },
-])
+function Nav(props) {
+    // lifted up to App.js
+// const [currentCategory, setCurrentCategory] = useState(categories[0]);
+// const [categories] = useState([
+//     {
+//         name: "commercial",
+//         description: "Photos of grocery stores, food trucks, and other commercial projects",
+//     },
+//     {
+//         name: "portraits",
+//         description: "Portraits of people in my life"
+//     },
+//     {
+//         name: "food",
+//         description: "Delicious delicacies"
+//     },
+//     {
+//         name: "landscape",
+//         description: "Fields, farmhouses, waterfalls, and the beauty of nature"
+//     },
+// ])
+
+    
+
+    const {
+        categories = [],
+        setCurrentCategory,
+        currentCategory,
+    } = props; 
+
+    useEffect(() => {
+        document.title = capitalizeFirstLetter(currentCategory.name);
+    }, [currentCategory]);
+
+    console.log(document.title)
 
     return (
         <header className="flex-row px-1">
@@ -64,7 +79,7 @@ const [categories] = useState([
                             About Me
                         </a>
                     </li>
-                    <li>
+                    <li className="mx-2">
                         <span>Contact</span>
                     </li>
                     
