@@ -110,13 +110,17 @@ function PhotoList({ category }) {
     const toggleModal = (image, i) => {
       setCurrentPhoto({...image, index: i});
 
-      setIsModalOpen(true);
+      // setIsModalOpen(true); replaced by below. . . 
+      setIsModalOpen(!isModalOpen);
     }
 
     return (
         <div>
             {/* if isModalOpen, return/render . . . (will break without short-circuit AND operator. currentPhoto is undefined unless an image is clicked) */}
-            {isModalOpen && <Modal currentPhoto={currentPhoto} />}
+            {/* {isModalOpen && <Modal currentPhoto={currentPhoto} />} - replaced by below...*/}
+            {isModalOpen && (
+              <Modal currentPhoto={currentPhoto} onClose={toggleModal} />
+            )}
             <div className="flex-row">
                 {currentPhotos.map((image, i) => (
                     <img

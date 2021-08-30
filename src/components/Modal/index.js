@@ -1,7 +1,7 @@
 import React from 'react';
 
-// props deconstructed to currentPhoto
-function Modal({currentPhoto}) {
+// props deconstructed to currentPhoto & onClose
+function Modal({ currentPhoto, onClose }) {
     const {name, category, description, index} = currentPhoto;
 
     return (
@@ -10,9 +10,10 @@ function Modal({currentPhoto}) {
                 <h3 className="modalTitle">{name}</h3>
                 <img alt="current category" src={require(`../../assets/large/${category}/${index}.jpg`).default}/>
                 <p>{description}</p>
-                <button type="button">
+                <button type="button" onClick={onClose}>
                     Close this modal
                 </button>
+                {/* closes Modal */}
             </div>
         </div>
     );
