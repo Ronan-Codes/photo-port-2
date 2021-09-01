@@ -41,6 +41,7 @@ function App() {
         setContactSelected={setContactSelected}
       ></Nav>
       <main>
+        {/* `? :` With the ternary, we supply the false condition to render as well.  */}
         {!contactSelected ? (
           <>
             <Gallery currentCategory={currentCategory}></Gallery>
